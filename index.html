@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Consulta - Plan de Compras Acueducto Valles del Tuy</title>
+    <!-- Bootstrap CSS para un diseño limpio y moderno -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; font-family: Arial, sans-serif; }
+        .navbar { background-color: #0d6efd; }
+        .card { box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: none; }
+        .table-container { max-height: 600px; overflow-y: auto; }
+        #loading { display: flex; justify-content: center; align-items: center; height: 50vh; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-dark mb-4">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">📊 Sistema de Consulta - Plan de Compras Valles del Tuy</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Loader mientras carga la data de Google Sheets -->
+        <div id="loading">
+            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Cargando datos...</span>
+            </div>
+            <span class="ms-3 fs-5">Conectando con Google Sheets y cargando registros...</span>
+        </div>
+
+        <!-- Contenido principal (oculto hasta que cargue) -->
+        <div id="main-content" style="display: none;">
+            
+            <!-- Buscador Global -->
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <div class="card p-3">
+                        <label for="globalSearch" class="form-label fw-bold">🔍 Buscador Global en vivo (filtra en todas las categorías):</label>
+                        <input type="text" id="globalSearch" class="form-control form-control-lg" placeholder="Escribe para buscar cualquier repuesto, material, descripción...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pestañas de las Categorías / Hojas -->
+            <ul class="nav nav-tabs" id="sheetTabs" role="tablist">
+                <!-- Se llenarán dinámicamente con JS -->
+            </ul>
+
+            <!-- Contenido de las Pestañas -->
+            <div class="tab-content card p-3 border-top-0 rounded-bottom" id="sheetTabContent">
+                <!-- Se llenarán dinámicamente con JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de lógica -->
+    <script>
+        // PEGA AQUÍ TU URL DE LA APLICACIÓN WEB DE GOOGLE APPS SCRIPT
+        const WEB_APP_URL = "TU_URL_DE_APPS_SCRIPT_AQUI";
+
+        let globalData = {};
+
+        async function fetchSheetData() {
+            try {
+                const response = await fetch(WEB_APP_URL);
+                globalData = await response.json();
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                
+                renderApp(globalData);
+            } catch (error) {
+                console.error("Error al cargar los datos:", error);
+                document.getElementById('loading').innerHTML = '<div class="alert alert-danger">Error al conectar con Google Sheets. Verifica la URL del Apps Script.</div>';
+            }
+        }
+
+        function renderApp(data) {
+            const tabsContainer = document.getElementById('sheetTabs');
+            const contentContainer = document.getElementById('sheetTabContent');
+            
+            tabsContainer.innerHTML = '';
+            contentContainer.innerHTML = '';
+
+            let first = true;
+
+            for (let sheetName in data) {
+                const sheetInfo = data[sheetName];
+                const safeId = sheetName.replace(/[^a-zA-Z0-9]/g, '_');
+
+                // Crear Pestaña
+                const tabLi = document.createElement('li');
+                tabLi.className = 'nav-item';
+                tabLi.role = 'presentation';
+                tabLi.innerHTML = `
+                    <button class="nav-link ${first ? 'active' : ''}" id="${safeId}-tab" data-bs-toggle="tab" data-bs-target="#${safeId}-pane" type="button" role="tab">${sheetName} (${sheetInfo.rows.length})</button>
+                `;
+                tabsContainer.appendChild(tabLi);
+
+                // Crear Contenedor de la Pestaña
+                const paneDiv = document.createElement('div');
+                paneDiv.className = `tab-pane fade ${first ? 'show active' : ''}`;
+                paneDiv.id = `${safeId}-pane`;
+                paneDiv.role = 'tabpanel';
+
+                // Construir Tabla
+                let tableHtml = `
+                    <div class="table-container">
+                        <table class="table table-striped table-hover table-bordered data-table">
+                            <thead class="table-dark sticky-top">
+                                <tr>
+                `;
+
+                sheetInfo.headers.forEach(header => {
+                    tableHtml += `<th>${header}</th>`;
+                });
+
+                tableHtml += `</tr></thead><tbody>`;
+
+                sheetInfo.rows.forEach(row => {
+                    tableHtml += `<tr>`;
+                    sheetInfo.headers.forEach(header => {
+                        tableHtml += `<td>${row[header] !== undefined ? row[header] : ''}</td>`;
+                    });
+                    tableHtml += `</tr>`;
+                });
+
+                tableHtml += `</tbody></table></div>`;
+                paneDiv.innerHTML = tableHtml;
+                contentContainer.appendChild(paneDiv);
+
+                first = false;
+            }
+
+            // Activar Buscador Global
+            setupSearch();
+        }
+
+        function setupSearch() {
+            const searchInput = document.getElementById('globalSearch');
+            searchInput.addEventListener('keyup', function() {
+                const filter = searchInput.value.toLowerCase();
+                const activePane = document.querySelector('.tab-pane.show.active');
+                if (!activePane) return;
+
+                const rows = activePane.querySelectorAll('tbody tr');
+                rows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    row.style.display = text.includes(filter) ? '' : 'none';
+                });
+            });
+        }
+
+        // Iniciar carga al abrir la página
+        fetchSheetData();
+    </script>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
