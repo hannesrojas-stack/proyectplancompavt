@@ -3,162 +3,357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Consulta - Plan de Compras Acueducto Valles del Tuy</title>
-    <!-- Bootstrap CSS para un diseño limpio y moderno -->
+    <title>Plan de Compras - Acueducto Valles del Tuy | Sistema Heavy Duty</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter para un look industrial técnico -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        body { background-color: #f8f9fa; font-family: Arial, sans-serif; }
-        .navbar { background-color: #0d6efd; }
-        .card { box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: none; }
-        .table-container { max-height: 600px; overflow-y: auto; }
-        #loading { display: flex; justify-content: center; align-items: center; height: 50vh; }
+        :root {
+            --primary-red: #D32F2F;
+            --dark-charcoal: #121212;
+            --panel-gray: #1E1E1E;
+            --border-gray: #333333;
+            --text-light: #F4F4F4;
+            --text-muted: #A0A0A0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-charcoal);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Cabecera Industrial Heavy Duty */
+        .heavy-header {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            border-bottom: 4px solid var(--primary-red);
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+
+        .heavy-title {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .heavy-subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-system {
+            background-color: var(--primary-red);
+            color: white;
+            font-weight: 700;
+            padding: 0.4rem 0.8rem;
+            border-radius: 2px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Buscador Industrial */
+        .search-container {
+            background-color: var(--panel-gray);
+            border: 1px solid var(--border-gray);
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .form-control, .form-select {
+            background-color: #2b2b2b;
+            border: 1px solid #444;
+            color: var(--text-light);
+            border-radius: 2px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: #2b2b2b;
+            border-color: var(--primary-red);
+            color: var(--text-light);
+            box-shadow: 0 0 0 0.2rem rgba(211, 47, 47, 0.25);
+        }
+
+        /* Pestañas de Categorías Estilo Panel */
+        .nav-tabs {
+            border-bottom: 2px solid var(--border-gray);
+            gap: 5px;
+        }
+
+        .nav-tabs .nav-link {
+            background-color: #1a1a1a;
+            color: var(--text-muted);
+            border: 1px solid var(--border-gray);
+            border-bottom: none;
+            border-radius: 3px 3px 0 0;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            padding: 0.75rem 1.25rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .nav-tabs .nav-link:hover {
+            border-color: #555;
+            color: #fff;
+            background-color: #252525;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: var(--primary-red);
+            color: #ffffff;
+            border-color: var(--primary-red);
+        }
+
+        /* Contenedor de Tabla Industrial */
+        .table-panel {
+            background-color: var(--panel-gray);
+            border: 1px solid var(--border-gray);
+            border-radius: 0 0 4px 4px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .table-dark-industrial {
+            color: var(--text-light);
+            background-color: var(--panel-gray);
+            margin-bottom: 0;
+        }
+
+        .table-dark-industrial th {
+            background-color: #111111;
+            color: var(--primary-red);
+            border-bottom: 2px solid var(--primary-red);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            padding: 1rem;
+        }
+
+        .table-dark-industrial td {
+            background-color: var(--panel-gray);
+            border-bottom: 1px solid #2a2a2a;
+            padding: 0.85rem 1rem;
+            vertical-align: middle;
+            font-size: 0.9rem;
+        }
+
+        .table-dark-industrial tbody tr:hover td {
+            background-color: #252525;
+            color: #ffffff;
+        }
+
+        /* Indicador de Carga */
+        .loader-container {
+            text-align: center;
+            padding: 4rem;
+            color: var(--text-muted);
+        }
+
+        .spinner-border {
+            color: var(--primary-red);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 3rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border-gray);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-dark mb-4">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">📊 Sistema de Consulta - Plan de Compras Valles del Tuy</span>
-        </div>
-    </nav>
-
-    <div class="container">
-        <!-- Loader mientras carga la data de Google Sheets -->
-        <div id="loading">
-            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
-                <span class="visually-hidden">Cargando datos...</span>
+    <!-- Cabecera -->
+    <div class="heavy-header">
+        <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div>
+                <span class="badge-system mb-2 d-inline-block"><i class="fa-solid fa-industry me-1"></i> Heavy Duty System</span>
+                <h1 class="heavy-title fs-3 mb-0">Plan de Compras - Acueducto Valles del Tuy</h1>
+                <p class="heavy-subtitle mb-0">Sistema de Consulta y Control Técnico en Vivo</p>
             </div>
-            <span class="ms-3 fs-5">Conectando con Google Sheets y cargando registros...</span>
-        </div>
-
-        <!-- Contenido principal (oculto hasta que cargue) -->
-        <div id="main-content" style="display: none;">
-            
-            <!-- Buscador Global -->
-            <div class="row mb-3">
-                <div class="col-md-12">
-                    <div class="card p-3">
-                        <label for="globalSearch" class="form-label fw-bold">🔍 Buscador Global en vivo (filtra en todas las categorías):</label>
-                        <input type="text" id="globalSearch" class="form-control form-control-lg" placeholder="Escribe para buscar cualquier repuesto, material, descripción...">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pestañas de las Categorías / Hojas -->
-            <ul class="nav nav-tabs" id="sheetTabs" role="tablist">
-                <!-- Se llenarán dinámicamente con JS -->
-            </ul>
-
-            <!-- Contenido de las Pestañas -->
-            <div class="tab-content card p-3 border-top-0 rounded-bottom" id="sheetTabContent">
-                <!-- Se llenarán dinámicamente con JS -->
+            <div>
+                <span class="text-muted small"><i class="fa-solid fa-database me-1"></i> Conectado a Google Sheets API</span>
             </div>
         </div>
     </div>
 
-    <!-- Script de lógica -->
+    <div class="container-fluid px-4">
+        
+        <!-- Buscador Global -->
+        <div class="search-container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-secondary text-danger"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" id="globalSearch" class="form-control" placeholder="Buscar por código, descripción, material o especificación en todas las categorías...">
+                    </div>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <span id="recordCount" class="text-muted small fw-bold">Cargando registros...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zona de Pestañas y Contenido -->
+        <div id="appContainer">
+            <div class="loader-container">
+                <div class="spinner-border mb-3" role="status"></div>
+                <p>Estableciendo enlace de alta resistencia con la base de datos...</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <p class="mb-0">Acueducto Valles del Tuy &bull; Módulo de Gestión de Compras e Inventario Técnico</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
-        // PEGA AQUÍ TU URL DE LA APLICACIÓN WEB DE GOOGLE APPS SCRIPT
-        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwwzfaJ57_Bis-Okgh-CaOrd_gaoUZbr5RE-_SY7c0JtAzQQLX3k6qiIYs_F19tFpfy/exec";
+        // ⚠️ PEGA AQUÍ TU URL DE GOOGLE APPS SCRIPT
+        const API_URL = "https://script.google.com/macros/s/AKfycbwwzfaJ57_Bis-Okgh-CaOrd_gaoUZbr5RE-_SY7c0JtAzQQLX3k6qiIYs_F19tFpfy/exec";
 
-        let globalData = {};
+        let globalDataCache = {};
 
-        async function fetchSheetData() {
+        async function loadData() {
             try {
-                const response = await fetch(WEB_APP_URL);
-                globalData = await response.json();
-                
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-                
-                renderApp(globalData);
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                globalDataCache = data;
+                renderApp(data);
             } catch (error) {
-                console.error("Error al cargar los datos:", error);
-                document.getElementById('loading').innerHTML = '<div class="alert alert-danger">Error al conectar con Google Sheets. Verifica la URL del Apps Script.</div>';
+                console.error("Error al conectar con la API:", error);
+                document.getElementById('appContainer').innerHTML = `
+                    <div class="alert alert-danger border-0 bg-danger text-white p-4" role="alert">
+                        <h4 class="alert-heading fw-bold"><i class="fa-solid fa-triangle-exclamation me-2"></i> Error de Conexión</h4>
+                        <p class="mb-0">No se pudo establecer comunicación con la API de Google Sheets. Verifica que la URL esté correctamente configurada en el código.</p>
+                    </div>
+                `;
             }
         }
 
         function renderApp(data) {
-            const tabsContainer = document.getElementById('sheetTabs');
-            const contentContainer = document.getElementById('sheetTabContent');
-            
-            tabsContainer.innerHTML = '';
-            contentContainer.innerHTML = '';
+            const container = document.getElementById('appContainer');
+            const sheetNames = Object.keys(data);
 
-            let first = true;
-
-            for (let sheetName in data) {
-                const sheetInfo = data[sheetName];
-                const safeId = sheetName.replace(/[^a-zA-Z0-9]/g, '_');
-
-                // Crear Pestaña
-                const tabLi = document.createElement('li');
-                tabLi.className = 'nav-item';
-                tabLi.role = 'presentation';
-                tabLi.innerHTML = `
-                    <button class="nav-link ${first ? 'active' : ''}" id="${safeId}-tab" data-bs-toggle="tab" data-bs-target="#${safeId}-pane" type="button" role="tab">${sheetName} (${sheetInfo.rows.length})</button>
-                `;
-                tabsContainer.appendChild(tabLi);
-
-                // Crear Contenedor de la Pestaña
-                const paneDiv = document.createElement('div');
-                paneDiv.className = `tab-pane fade ${first ? 'show active' : ''}`;
-                paneDiv.id = `${safeId}-pane`;
-                paneDiv.role = 'tabpanel';
-
-                // Construir Tabla
-                let tableHtml = `
-                    <div class="table-container">
-                        <table class="table table-striped table-hover table-bordered data-table">
-                            <thead class="table-dark sticky-top">
-                                <tr>
-                `;
-
-                sheetInfo.headers.forEach(header => {
-                    tableHtml += `<th>${header}</th>`;
-                });
-
-                tableHtml += `</tr></thead><tbody>`;
-
-                sheetInfo.rows.forEach(row => {
-                    tableHtml += `<tr>`;
-                    sheetInfo.headers.forEach(header => {
-                        tableHtml += `<td>${row[header] !== undefined ? row[header] : ''}</td>`;
-                    });
-                    tableHtml += `</tr>`;
-                });
-
-                tableHtml += `</tbody></table></div>`;
-                paneDiv.innerHTML = tableHtml;
-                contentContainer.appendChild(paneDiv);
-
-                first = false;
+            if (sheetNames.length === 0) {
+                container.innerHTML = '<div class="text-center text-muted p-4">No se encontraron datos en las hojas.</div>';
+                return;
             }
 
-            // Activar Buscador Global
-            setupSearch();
+            let navTabsHTML = '<ul class="nav nav-tabs" id="categoryTabs" role="tablist">';
+            let tabContentHTML = '<div class="tab-content table-panel" id="categoryTabsContent">';
+
+            sheetNames.forEach((name, index) => {
+                const tabId = `tab-${index}`;
+                const safeId = name.replace(/[^a-zA-Z0-9]/g, '_');
+                const isActive = index === 0 ? 'active' : '';
+                const isShow = index === 0 ? 'show active' : '';
+
+                // Pestaña de navegación
+                navTabsHTML += `
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link ${isActive}" id="${safeId}-tab" data-bs-toggle="tab" data-bs-target="#${safeId}" type="button" role="tab">${name}</button>
+                    </li>
+                `;
+
+                // Contenido de la pestaña (Tabla)
+                const rows = data[name] || [];
+                let tableHTML = '';
+
+                if (rows.length === 0) {
+                    tableHTML = '<p class="text-muted text-center py-4 mb-0">No hay registros disponibles en esta categoría.</p>';
+                } else {
+                    const headers = Object.keys(rows[0]);
+                    tableHTML = `
+                        <div class="table-responsive">
+                            <table class="table table-dark-industrial table-striped align-middle">
+                                <thead>
+                                    <tr>
+                                        ${headers.map(h => `<th>${h}</th>`).join('')}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${rows.map(row => `
+                                        <tr>
+                                            ${headers.map(h => `<td>${row[h] !== undefined ? row[h] : ''}</td>`).join('')}
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                }
+
+                tabContentHTML += `
+                    <div class="tab-pane fade ${isShow}" id="${safeId}" role="tabpanel">
+                        ${tableHTML}
+                    </div>
+                `;
+            });
+
+            navTabsHTML += '</ul>';
+            tabContentHTML += '</div>';
+
+            container.innerHTML = navTabsHTML + tabContentHTML;
+            updateRecordCount();
+            setupGlobalSearch();
         }
 
-        function setupSearch() {
-            const searchInput = document.getElementById('globalSearch');
-            searchInput.addEventListener('keyup', function() {
-                const filter = searchInput.value.toLowerCase();
-                const activePane = document.querySelector('.tab-pane.show.active');
-                if (!activePane) return;
+        function updateRecordCount() {
+            let total = 0;
+            Object.values(globalDataCache).forEach(rows => {
+                total += rows.length;
+            });
+            document.getElementById('recordCount').innerHTML = `<i class="fa-solid fa-list-check me-1"></i> Total Registros: ${total}`;
+        }
 
-                const rows = activePane.querySelectorAll('tbody tr');
-                rows.forEach(row => {
-                    const text = row.textContent.toLowerCase();
-                    row.style.display = text.includes(filter) ? '' : 'none';
+        function setupGlobalSearch() {
+            const searchInput = document.getElementById('globalSearch');
+            searchInput.addEventListener('input', function(e) {
+                const term = e.target.value.toLowerCase().trim();
+                const panes = document.querySelectorAll('.tab-pane');
+
+                panes.forEach(pane => {
+                    const rows = pane.querySelectorAll('tbody tr');
+                    let visibleCount = 0;
+                    rows.forEach(row => {
+                        const text = row.textContent.toLowerCase();
+                        if (text.includes(term)) {
+                            row.style.display = '';
+                            visibleCount++;
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
                 });
             });
         }
 
-        // Iniciar carga al abrir la página
-        fetchSheetData();
+        // Inicializar carga de datos
+        loadData();
     </script>
-
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
