@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan de Compras - Acueducto Valles del Tuy | Sistema Heavy Duty</title>
+    <title>Plan de Compras 2021 - Acueducto Valles del Tuy | Sistema Estático Heavy Duty</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Inter para un look industrial técnico -->
+    <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
@@ -74,14 +74,14 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        .form-control, .form-select {
+        .form-control {
             background-color: #2b2b2b;
             border: 1px solid #444;
             color: var(--text-light);
             border-radius: 2px;
         }
 
-        .form-control:focus, .form-select:focus {
+        .form-control:focus {
             background-color: #2b2b2b;
             border-color: var(--primary-red);
             color: var(--text-light);
@@ -101,9 +101,9 @@
             border-bottom: none;
             border-radius: 3px 3px 0 0;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            padding: 0.75rem 1.25rem;
+            padding: 0.7rem 1rem;
             transition: all 0.2s ease-in-out;
         }
 
@@ -157,17 +157,6 @@
             color: #ffffff;
         }
 
-        /* Indicador de Carga */
-        .loader-container {
-            text-align: center;
-            padding: 4rem;
-            color: var(--text-muted);
-        }
-
-        .spinner-border {
-            color: var(--primary-red);
-        }
-
         /* Footer */
         footer {
             margin-top: 3rem;
@@ -185,12 +174,12 @@
     <div class="heavy-header">
         <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap gap-3">
             <div>
-                <span class="badge-system mb-2 d-inline-block"><i class="fa-solid fa-industry me-1"></i> Heavy Duty System</span>
+                <span class="badge-system mb-2 d-inline-block"><i class="fa-solid fa-box-archive me-1"></i> Archivo Histórico 2021</span>
                 <h1 class="heavy-title fs-3 mb-0">Plan de Compras - Acueducto Valles del Tuy</h1>
-                <p class="heavy-subtitle mb-0">Sistema de Consulta y Control Técnico en Vivo</p>
+                <p class="heavy-subtitle mb-0">Sistema de Consulta Estático (Alta Velocidad)</p>
             </div>
             <div>
-                <span class="text-muted small"><i class="fa-solid fa-database me-1"></i> Conectado a Google Sheets API</span>
+                <span class="text-muted small"><i class="fa-solid fa-bolt me-1"></i> Modo 100% Autónomo</span>
             </div>
         </div>
     </div>
@@ -200,31 +189,120 @@
         <!-- Buscador Global -->
         <div class="search-container">
             <div class="row align-items-center">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="input-group">
                         <span class="input-group-text bg-dark border-secondary text-danger"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" id="globalSearch" class="form-control" placeholder="Buscar por código, descripción, material o especificación en todas las categorías...">
+                        <input type="text" id="globalSearch" class="form-control" placeholder="Buscar por código, descripción o especificación en todas las categorías...">
                     </div>
-                </div>
-                <div class="col-md-4 text-md-end mt-3 mt-md-0">
-                    <span id="recordCount" class="text-muted small fw-bold">Cargando registros...</span>
                 </div>
             </div>
         </div>
 
-        <!-- Zona de Pestañas y Contenido -->
-        <div id="appContainer">
-            <div class="loader-container">
-                <div class="spinner-border mb-3" role="status"></div>
-                <p>Estableciendo enlace de alta resistencia con la base de datos...</p>
+        <!-- Zona de Pestañas (16 Categorías) -->
+        <ul class="nav nav-tabs" id="categoryTabs" role="tablist">
+            <li class="nav-item" role="presentation"><button class="nav-link active" id="cat1-tab" data-bs-toggle="tab" data-bs-target="#cat1" type="button" role="tab">Categoría 1</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat2-tab" data-bs-toggle="tab" data-bs-target="#cat2" type="button" role="tab">Categoría 2</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat3-tab" data-bs-toggle="tab" data-bs-target="#cat3" type="button" role="tab">Categoría 3</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat4-tab" data-bs-toggle="tab" data-bs-target="#cat4" type="button" role="tab">Categoría 4</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat5-tab" data-bs-toggle="tab" data-bs-target="#cat5" type="button" role="tab">Categoría 5</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat6-tab" data-bs-toggle="tab" data-bs-target="#cat6" type="button" role="tab">Categoría 6</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat7-tab" data-bs-toggle="tab" data-bs-target="#cat7" type="button" role="tab">Categoría 7</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat8-tab" data-bs-toggle="tab" data-bs-target="#cat8" type="button" role="tab">Categoría 8</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat9-tab" data-bs-toggle="tab" data-bs-target="#cat9" type="button" role="tab">Categoría 9</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat10-tab" data-bs-toggle="tab" data-bs-target="#cat10" type="button" role="tab">Categoría 10</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat11-tab" data-bs-toggle="tab" data-bs-target="#cat11" type="button" role="tab">Categoría 11</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat12-tab" data-bs-toggle="tab" data-bs-target="#cat12" type="button" role="tab">Categoría 12</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat13-tab" data-bs-toggle="tab" data-bs-target="#cat13" type="button" role="tab">Categoría 13</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat14-tab" data-bs-toggle="tab" data-bs-target="#cat14" type="button" role="tab">Categoría 14</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat15-tab" data-bs-toggle="tab" data-bs-target="#cat15" type="button" role="tab">Categoría 15</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat16-tab" data-bs-toggle="tab" data-bs-target="#cat16" type="button" role="tab">Categoría 16</button></li>
+        </ul>
+
+        <!-- Contenido de las Tablas (Pestañas) -->
+        <div class="tab-content table-panel" id="categoryTabsContent">
+            
+            <!-- Categoría 1 -->
+            <div class="tab-pane fade show active" id="cat1" role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table table-dark-industrial table-striped align-middle">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Descripción del Material / Insumo</th>
+                                <th>Unidad</th>
+                                <th>Cantidad</th>
+                                <th>Observaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>MAT-001</td>
+                                <td>Válvula de compuerta de 4 pulgadas</td>
+                                <td>PZA</td>
+                                <td>12</td>
+                                <td>Reemplazo principal</td>
+                            </tr>
+                            <tr>
+                                <td>MAT-002</td>
+                                <td>Tubo de acero al carbón 6"</td>
+                                <td>MTS</td>
+                                <td>36</td>
+                                <td>Línea de aducción</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
+            <!-- Categoría 2 -->
+            <div class="tab-pane fade" id="cat2" role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table table-dark-industrial table-striped align-middle">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Descripción del Material / Insumo</th>
+                                <th>Unidad</th>
+                                <th>Cantidad</th>
+                                <th>Observaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>MAT-101</td>
+                                <td>Empacadura de nitrilo 8"</td>
+                                <td>PZA</td>
+                                <td>25</td>
+                                <td>Estación de bombeo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Categorías 3 a 16 (Plantillas vacías listas para rellenar) -->
+            <div class="tab-pane fade" id="cat3" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 3</div></div>
+            <div class="tab-pane fade" id="cat4" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 4</div></div>
+            <div class="tab-pane fade" id="cat5" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 5</div></div>
+            <div class="tab-pane fade" id="cat6" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 6</div></div>
+            <div class="tab-pane fade" id="cat7" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 7</div></div>
+            <div class="tab-pane fade" id="cat8" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 8</div></div>
+            <div class="tab-pane fade" id="cat9" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 9</div></div>
+            <div class="tab-pane fade" id="cat10" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 10</div></div>
+            <div class="tab-pane fade" id="cat11" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 11</div></div>
+            <div class="tab-pane fade" id="cat12" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 12</div></div>
+            <div class="tab-pane fade" id="cat13" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 13</div></div>
+            <div class="tab-pane fade" id="cat14" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 14</div></div>
+            <div class="tab-pane fade" id="cat15" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 15</div></div>
+            <div class="tab-pane fade" id="cat16" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 16</div></div>
+
         </div>
 
     </div>
 
     <footer>
         <div class="container">
-            <p class="mb-0">Acueducto Valles del Tuy &bull; Módulo de Gestión de Compras e Inventario Técnico</p>
+            <p class="mb-0">Acueducto Valles del Tuy &bull; Plan de Compras Histórico (2021)</p>
         </div>
     </footer>
 
@@ -232,128 +310,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // ⚠️ PEGA AQUÍ TU URL DE GOOGLE APPS SCRIPT
-        const API_URL = "https://script.google.com/macros/s/AKfycbwwzfaJ57_Bis-Okgh-CaOrd_gaoUZbr5RE-_SY7c0JtAzQQLX3k6qiIYs_F19tFpfy/exec";
+        // Buscador instantáneo en vivo para todas las tablas de la página
+        document.getElementById('globalSearch').addEventListener('input', function(e) {
+            const term = e.target.value.toLowerCase().trim();
+            const panes = document.querySelectorAll('.tab-pane');
 
-        let globalDataCache = {};
-
-        async function loadData() {
-            try {
-                const response = await fetch(API_URL);
-                const data = await response.json();
-                globalDataCache = data;
-                renderApp(data);
-            } catch (error) {
-                console.error("Error al conectar con la API:", error);
-                document.getElementById('appContainer').innerHTML = `
-                    <div class="alert alert-danger border-0 bg-danger text-white p-4" role="alert">
-                        <h4 class="alert-heading fw-bold"><i class="fa-solid fa-triangle-exclamation me-2"></i> Error de Conexión</h4>
-                        <p class="mb-0">No se pudo establecer comunicación con la API de Google Sheets. Verifica que la URL esté correctamente configurada en el código.</p>
-                    </div>
-                `;
-            }
-        }
-
-        function renderApp(data) {
-            const container = document.getElementById('appContainer');
-            const sheetNames = Object.keys(data);
-
-            if (sheetNames.length === 0) {
-                container.innerHTML = '<div class="text-center text-muted p-4">No se encontraron datos en las hojas.</div>';
-                return;
-            }
-
-            let navTabsHTML = '<ul class="nav nav-tabs" id="categoryTabs" role="tablist">';
-            let tabContentHTML = '<div class="tab-content table-panel" id="categoryTabsContent">';
-
-            sheetNames.forEach((name, index) => {
-                const tabId = `tab-${index}`;
-                const safeId = name.replace(/[^a-zA-Z0-9]/g, '_');
-                const isActive = index === 0 ? 'active' : '';
-                const isShow = index === 0 ? 'show active' : '';
-
-                // Pestaña de navegación
-                navTabsHTML += `
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link ${isActive}" id="${safeId}-tab" data-bs-toggle="tab" data-bs-target="#${safeId}" type="button" role="tab">${name}</button>
-                    </li>
-                `;
-
-                // Contenido de la pestaña (Tabla)
-                const rows = data[name] || [];
-                let tableHTML = '';
-
-                if (rows.length === 0) {
-                    tableHTML = '<p class="text-muted text-center py-4 mb-0">No hay registros disponibles en esta categoría.</p>';
-                } else {
-                    const headers = Object.keys(rows[0]);
-                    tableHTML = `
-                        <div class="table-responsive">
-                            <table class="table table-dark-industrial table-striped align-middle">
-                                <thead>
-                                    <tr>
-                                        ${headers.map(h => `<th>${h}</th>`).join('')}
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    ${rows.map(row => `
-                                        <tr>
-                                            ${headers.map(h => `<td>${row[h] !== undefined ? row[h] : ''}</td>`).join('')}
-                                        </tr>
-                                    `).join('')}
-                                </tbody>
-                            </table>
-                        </div>
-                    `;
-                }
-
-                tabContentHTML += `
-                    <div class="tab-pane fade ${isShow}" id="${safeId}" role="tabpanel">
-                        ${tableHTML}
-                    </div>
-                `;
-            });
-
-            navTabsHTML += '</ul>';
-            tabContentHTML += '</div>';
-
-            container.innerHTML = navTabsHTML + tabContentHTML;
-            updateRecordCount();
-            setupGlobalSearch();
-        }
-
-        function updateRecordCount() {
-            let total = 0;
-            Object.values(globalDataCache).forEach(rows => {
-                total += rows.length;
-            });
-            document.getElementById('recordCount').innerHTML = `<i class="fa-solid fa-list-check me-1"></i> Total Registros: ${total}`;
-        }
-
-        function setupGlobalSearch() {
-            const searchInput = document.getElementById('globalSearch');
-            searchInput.addEventListener('input', function(e) {
-                const term = e.target.value.toLowerCase().trim();
-                const panes = document.querySelectorAll('.tab-pane');
-
-                panes.forEach(pane => {
-                    const rows = pane.querySelectorAll('tbody tr');
-                    let visibleCount = 0;
-                    rows.forEach(row => {
-                        const text = row.textContent.toLowerCase();
-                        if (text.includes(term)) {
-                            row.style.display = '';
-                            visibleCount++;
-                        } else {
-                            row.style.display = 'none';
-                        }
-                    });
+            panes.forEach(pane => {
+                const rows = pane.querySelectorAll('tbody tr');
+                rows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    if (text.includes(term)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
                 });
             });
-        }
-
-        // Inicializar carga de datos
-        loadData();
+        });
     </script>
 </body>
 </html>
