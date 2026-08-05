@@ -106,9 +106,9 @@
             border-bottom: none;
             border-radius: 3px 3px 0 0;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            padding: 0.7rem 1rem;
+            padding: 0.7rem 0.8rem;
             transition: all 0.2s ease-in-out;
         }
 
@@ -137,24 +137,33 @@
             color: var(--text-light);
             background-color: var(--panel-gray);
             margin-bottom: 0;
+            font-size: 0.8rem;
         }
 
         .table-dark-industrial th {
             background-color: #111111;
             color: var(--primary-red);
-            border-bottom: 2px solid var(--primary-red);
+            border: 1px solid #333;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 0.5px;
-            padding: 1rem;
+            padding: 0.75rem 0.5rem;
+            text-align: center;
+            vertical-align: middle;
         }
 
         .table-dark-industrial td {
             background-color: var(--panel-gray);
-            border-bottom: 1px solid #2a2a2a;
-            padding: 0.85rem 1rem;
+            border: 1px solid #2a2a2a;
+            padding: 0.6rem 0.5rem;
             vertical-align: middle;
-            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .table-dark-industrial td:nth-child(3),
+        .table-dark-industrial td:nth-child(4) {
+            text-align: left;
+            font-weight: 600;
         }
 
         .table-dark-industrial tbody tr:hover td {
@@ -206,7 +215,7 @@
                 <div class="col-md-12">
                     <div class="input-group">
                         <span class="input-group-text bg-dark border-secondary text-danger"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" id="globalSearch" class="form-control" placeholder="Buscar por detalle o unidad en la categoría activa...">
+                        <input type="text" id="globalSearch" class="form-control" placeholder="Buscar por estación, marca, modelo o características en la categoría activa...">
                     </div>
                 </div>
             </div>
@@ -215,8 +224,8 @@
         <!-- Zona de Pestañas (16 Categorías) -->
         <ul class="nav nav-tabs" id="categoryTabs" role="tablist">
             <li class="nav-item" role="presentation"><button class="nav-link" id="cat1-tab" data-bs-toggle="tab" data-bs-target="#cat1" type="button" role="tab">AVT Administración</button></li>
-            <li class="nav-item" role="presentation"><button class="nav-link active" id="cat2-tab" data-bs-toggle="tab" data-bs-target="#cat2" type="button" role="tab">AVT Operaciones y Mtto Tub AC</button></li>
-            <li class="nav-item" role="presentation"><button class="nav-link" id="cat3-tab" data-bs-toggle="tab" data-bs-target="#cat3" type="button" role="tab">Categoría 3</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat2-tab" data-bs-toggle="tab" data-bs-target="#cat2" type="button" role="tab">AVT Operaciones y Mtto Tub AC</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link active" id="cat3-tab" data-bs-toggle="tab" data-bs-target="#cat3" type="button" role="tab">AVT Motores y Bomba</button></li>
             <li class="nav-item" role="presentation"><button class="nav-link" id="cat4-tab" data-bs-toggle="tab" data-bs-target="#cat4" type="button" role="tab">Categoría 4</button></li>
             <li class="nav-item" role="presentation"><button class="nav-link" id="cat5-tab" data-bs-toggle="tab" data-bs-target="#cat5" type="button" role="tab">Categoría 5</button></li>
             <li class="nav-item" role="presentation"><button class="nav-link" id="cat6-tab" data-bs-toggle="tab" data-bs-target="#cat6" type="button" role="tab">Categoría 6</button></li>
@@ -300,7 +309,7 @@
             </div>
 
             <!-- Categoría 2: AVT Operaciones y Mtto Tub AC -->
-            <div class="tab-pane fade show active" id="cat2" role="tabpanel">
+            <div class="tab-pane fade" id="cat2" role="tabpanel">
                 <div class="table-responsive">
                     <table class="table table-dark-industrial table-striped align-middle searchable-table">
                         <thead>
@@ -518,8 +527,339 @@
                 </div>
             </div>
 
-            <!-- Categorías 3 a 16 (Plantillas vacías preparadas) -->
-            <div class="tab-pane fade" id="cat3" role="tabpanel"><div class="text-muted text-center py-4">Categoría 3 pendiente de carga</div></div>
+            <!-- Categoría 3: AVT OP y MTTO Motores y bomba -->
+            <div class="tab-pane fade show active" id="cat3" role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table table-dark-industrial table-striped align-middle searchable-table">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">Estado</th>
+                                <th rowspan="2">Municipio</th>
+                                <th rowspan="2">Nombre Acueducto</th>
+                                <th rowspan="2">Nombre Estación</th>
+                                <th colspan="5">Bomba Centrífuga</th>
+                                <th colspan="12">Motores Eléctricos</th>
+                                <th rowspan="2">Cantidad</th>
+                                <th rowspan="2">Precio Referencial Unitario (Bs)</th>
+                                <th rowspan="2">Monto Total (Bs)</th>
+                                <th rowspan="2">Observaciones</th>
+                            </tr>
+                            <tr>
+                                <th>Multietapa</th>
+                                <th>Monoblock</th>
+                                <th>Vertical Tipo Turbina</th>
+                                <th>Fabricante o Marca</th>
+                                <th>Modelo</th>
+                                <th>Caudal (L/s)</th>
+                                <th>Presión Descarga (M.C.A.)</th>
+                                <th>Succión mm (pulg)</th>
+                                <th>Descarga mm (pulg)</th>
+                                <th>Fabricante o Marca</th>
+                                <th>Potencia HP (KW)</th>
+                                <th>Voltaje Trifásica (Vol)</th>
+                                <th>Tipo de Conexión (Directa o Estrella-Triángulo)</th>
+                                <th>Velocidad (RPM)</th>
+                                <th>Frame</th>
+                                <th>Clase de Aislamiento</th>
+                                <th>Frecuencia (Hz)</th>
+                                <th>Modo de Ejecución Horizontal o Vertical</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>MIRANDA</td><td>CRISTÓBAL ROJAS</td><td>VALLES DEL TUY</td><td>MATALINDA</td>
+                                <td>X</td><td></td><td></td><td>MALMEDI</td><td></td>
+                                <td>43</td><td>74</td><td>100</td><td>50</td>
+                                <td>US ELECTRICAL MOTORS</td><td>100</td><td>230/460</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>3560</td><td>CT CLAVE C</td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>CRISTÓBAL ROJAS</td><td>VALLES DEL TUY</td><td>BARRIALITO</td>
+                                <td>X</td><td></td><td></td><td>KSB</td><td>WKL 80/2</td>
+                                <td>36</td><td>108</td><td>160</td><td>80</td>
+                                <td>US ELECTRICAL MOTORS</td><td>75</td><td>230/460</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>3565</td><td>365 TS</td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>CRISTÓBAL ROJAS</td><td>VALLES DEL TUY</td><td>CHUPULUN</td>
+                                <td></td><td></td><td>X</td><td>PEERLESS</td><td>CBD 4X410 OLS</td>
+                                <td>22</td><td>60</td><td>200</td><td>100</td>
+                                <td>US ELECTRICAL MOTORS</td><td>15</td><td>230</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>1765</td><td>254TP</td><td>F</td><td>60</td><td>VERTICAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>CRISTÓBAL ROJAS</td><td>VALLES DEL TUY</td><td>CABRICERA</td>
+                                <td>X</td><td></td><td></td><td>KSB</td><td>WKL 50/5</td>
+                                <td>20</td><td>210</td><td>100</td><td>50</td>
+                                <td>US ELECTRICAL MOTORS</td><td>50</td><td>460</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>3450</td><td>CT CLAVE A</td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>CRISTÓBAL ROJAS</td><td>VALLES DEL TUY</td><td>CAIZA NUEVA</td>
+                                <td></td><td></td><td>X</td><td>GOULDS</td><td>11CHC</td>
+                                <td>30</td><td>110</td><td>400</td><td>200</td>
+                                <td>US ELECTRICAL MOTORS</td><td>200</td><td>220/380/440</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>1780</td><td></td><td>F</td><td>60</td><td>VERTICAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>CRISTÓBAL ROJAS</td><td>VALLES DEL TUY</td><td>LA HORQUILLA</td>
+                                <td></td><td>MEGABLOC</td><td></td><td>KSB</td><td>MEGABLOCK 40-200</td>
+                                <td>20</td><td>70</td><td>80</td><td>40</td>
+                                <td>WEG</td><td>20</td><td>220/380/440</td><td>DIRECTO</td>
+                                <td>3535</td><td>160M</td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>CRISTÓBAL ROJAS</td><td>VALLES DEL TUY</td><td>LA PEÑITA</td>
+                                <td>X</td><td></td><td></td><td>KSB</td><td>WKL 80/2</td>
+                                <td>110</td><td>160</td><td>160</td><td>80</td>
+                                <td>US ELECTRICAL MOTORS</td><td>200</td><td>460</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>3565</td><td>365T</td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>CRISTÓBAL ROJAS</td><td>VALLES DEL TUY</td><td>PITAHAYA</td>
+                                <td></td><td>MEGABLOC</td><td></td><td>KSB</td><td>MEGABLOCK 40-250F 32/160 L984</td>
+                                <td>12</td><td>80</td><td>80</td><td>40</td>
+                                <td>WEG MOTORS</td><td>20</td><td>220</td><td>DIRECTO</td>
+                                <td>3535</td><td>180M</td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>CRISTÓBAL ROJAS</td><td>VALLES DEL TUY</td><td>PLAZA PAEZ</td>
+                                <td>X</td><td></td><td></td><td>KSB</td><td>WKL 80/2</td>
+                                <td>7</td><td>50</td><td>64</td><td>32</td>
+                                <td>SIEMENS</td><td>20</td><td>220</td><td>DIRECTO</td>
+                                <td>3520</td><td>184JM</td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>CRISTÓBAL ROJAS</td><td>VALLES DEL TUY</td><td>LA ESTRELLA (7 ETAPAS)</td>
+                                <td></td><td></td><td>X</td><td>FABOVEN</td><td>11H</td>
+                                <td>70</td><td>110</td><td>400</td><td>200</td>
+                                <td>US ELECTRICAL MOTORS</td><td>150</td><td>440</td><td>ARRANCADOR SUAVE</td>
+                                <td>1780</td><td>H444TP</td><td>F</td><td>60</td><td>VERTICAL</td>
+                                <td>2</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>CRISTÓBAL ROJAS</td><td>VALLES DEL TUY</td><td>POZO CAIZA I</td>
+                                <td></td><td></td><td>X</td><td>GRUNFOS</td><td>SP230-3BB</td>
+                                <td>60</td><td>30</td><td></td><td>50</td>
+                                <td>FRANKLIN ELECTRIC</td><td>7.5</td><td>230</td><td>DIRECTO</td>
+                                <td>3450</td><td></td><td>F</td><td>60</td><td>SUMERGIBLE</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>CRISTÓBAL ROJAS</td><td>VALLES DEL TUY</td><td>POZO CAIZA II</td>
+                                <td></td><td></td><td>X</td><td>GRUNFOS</td><td>SP230-3BB</td>
+                                <td>60</td><td>30</td><td></td><td>50</td>
+                                <td>FRANKLIN ELECTRIC</td><td>10</td><td>230</td><td>DIRECTO</td>
+                                <td>3450</td><td></td><td>F</td><td>60</td><td>SUMERGIBLE</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>CRISTÓBAL ROJAS</td><td>VALLES DEL TUY</td><td>POZO CAIZA III</td>
+                                <td></td><td></td><td>X</td><td>GRUNFOS</td><td>SP230-3BB</td>
+                                <td>60</td><td>30</td><td></td><td>50</td>
+                                <td>FRANKLIN ELECTRIC</td><td>10</td><td>230</td><td>DIRECTO</td>
+                                <td>3450</td><td></td><td>F</td><td>60</td><td>SUMERGIBLE</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>RAFAEL URDANETA</td><td>VALLES DEL TUY</td><td>LOS ROSALES</td>
+                                <td>X</td><td></td><td></td><td>KSB</td><td>WKL 80/2</td>
+                                <td>160</td><td>50</td><td>160</td><td>80</td>
+                                <td>WEG</td><td>175</td><td>460</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>3570</td><td></td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>RAFAEL URDANETA</td><td>VALLES DEL TUY</td><td>LAS VILLAS</td>
+                                <td>X</td><td></td><td></td><td>MALMEDI</td><td></td>
+                                <td>9</td><td>40</td><td>50</td><td>25</td>
+                                <td>US ELECTRICAL MOTORS</td><td>5</td><td>230/460</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>3495</td><td></td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>RAFAEL URDANETA</td><td>VALLES DEL TUY</td><td>SAN MIGUEL</td>
+                                <td></td><td>MONOBLOC</td><td></td><td>MONOBLOC</td><td>5292 (2 ETAPAS)</td>
+                                <td>20</td><td>130</td><td>152</td><td>76</td>
+                                <td>US ELECTRICAL MOTORS</td><td>40</td><td>230</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>3535</td><td></td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>2</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>RAFAEL URDANETA</td><td>VALLES DEL TUY</td><td>LA CABULLA</td>
+                                <td></td><td></td><td>X</td><td>KSB</td><td></td>
+                                <td>5</td><td>40</td><td>100</td><td>50</td>
+                                <td>FRANKLIN ELECTRIC</td><td>15</td><td>460</td><td>DIRECTO</td>
+                                <td>3450</td><td></td><td>F</td><td>60</td><td>SUMERGIBLE</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>RAFAEL URDANETA</td><td>VALLES DEL TUY</td><td>LECHOZAL</td>
+                                <td>X</td><td></td><td></td><td>KSB</td><td>WKL 80/4</td>
+                                <td>20</td><td>65</td><td>160</td><td>80</td>
+                                <td>US ELECTRICAL MOTORS</td><td>40</td><td>230</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>1775</td><td>324T</td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>2</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>SIMÓN BOLÍVAR</td><td>VALLES DEL TUY</td><td>LAS PIÑAS</td>
+                                <td></td><td></td><td>X</td><td>BOMHAGUA</td><td>10H-75</td>
+                                <td>40</td><td>15</td><td>300</td><td>150</td>
+                                <td>US ELECTRICAL MOTORS</td><td>50</td><td>220</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>1760</td><td>326TP</td><td>F</td><td>60</td><td>VERTICAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>SIMÓN BOLÍVAR</td><td>VALLES DEL TUY</td><td>TM1 (YARE)</td>
+                                <td>X</td><td></td><td></td><td>KSB</td><td>WKL 150/2</td>
+                                <td>140</td><td>92</td><td>300</td><td>150</td>
+                                <td>US ELECTRICAL MOTORS</td><td>250</td><td>460</td><td>ARRANCADOR SUAVE</td>
+                                <td>1785</td><td>445T</td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>SIMÓN BOLÍVAR</td><td>VALLES DEL TUY</td><td>TM1 (SANTA TERESA)</td>
+                                <td>X</td><td></td><td></td><td>KSB</td><td>RDL 200-500F</td>
+                                <td>180</td><td>180</td><td>400</td><td>200</td>
+                                <td>US ELECTRICAL MOTORS</td><td>300</td><td>460</td><td>ARRANCADOR SUAVE</td>
+                                <td>1775</td><td>449T</td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>2</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>PAZ CASTILLO</td><td>VALLES DEL TUY</td><td>EL NOGAL</td>
+                                <td>X</td><td></td><td></td><td>MALMEDI</td><td>MOVI 65/2</td>
+                                <td>33</td><td>36</td><td>130</td><td>65</td>
+                                <td>ABB MOTORS</td><td>56</td><td>440</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>3560</td><td></td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>PAZ CASTILLO</td><td>VALLES DEL TUY</td><td>LA MANGUITA</td>
+                                <td>X</td><td></td><td></td><td>KSB</td><td>ETA 80/400</td>
+                                <td>80</td><td>78</td><td>160</td><td>80</td>
+                                <td>SIEMENS</td><td>75</td><td>440</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>1780</td><td></td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>PAZ CASTILLO</td><td>VALLES DEL TUY</td><td>LAS LUCÍAS</td>
+                                <td>X</td><td></td><td></td><td>KSB</td><td>WKL 80/2</td>
+                                <td>50</td><td>160</td><td>160</td><td>80</td>
+                                <td>US ELECTRICAL MOTORS</td><td>75</td><td>440</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>3560</td><td>LS 225M</td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>2</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>PAZ CASTILLO</td><td>VALLES DEL TUY</td><td>EL PALMAR</td>
+                                <td></td><td></td><td>X</td><td>APEC</td><td>ST 8014</td>
+                                <td>5</td><td>120</td><td></td><td>50</td>
+                                <td>FRANKLIN ELECTRIC</td><td>7.5</td><td>230</td><td>DIRECTO</td>
+                                <td>3450</td><td></td><td>F</td><td>60</td><td>SUMERGIBLE</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>PAZ CASTILLO</td><td>VALLES DEL TUY</td><td>GUERE GUERE</td>
+                                <td></td><td></td><td>X</td><td>GRUNFOS</td><td>SP300-17</td>
+                                <td>19</td><td>200</td><td>200</td><td>100</td>
+                                <td>FRANKLIN ELECTRIC</td><td>60</td><td>460</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>3450</td><td></td><td>F</td><td>60</td><td>SUMERGIBLE</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>PAZ CASTILLO</td><td>VALLES DEL TUY</td><td>LA MOCA</td>
+                                <td></td><td></td><td>X</td><td>GOULDS</td><td>55GS55</td>
+                                <td>7</td><td>70</td><td></td><td>50</td>
+                                <td>FRANKLIN ELECTRIC</td><td>7.5</td><td>230</td><td>DIRECTO</td>
+                                <td>3450</td><td></td><td>F</td><td>60</td><td>SUMERGIBLE</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>PAZ CASTILLO</td><td>VALLES DEL TUY</td><td>ARENAZA</td>
+                                <td></td><td></td><td>X</td><td>GOULDS</td><td>80GS50</td>
+                                <td>5</td><td>70</td><td></td><td>50</td>
+                                <td>FRANKLIN ELECTRIC</td><td>7.5</td><td>230</td><td>DIRECTO</td>
+                                <td>3450</td><td></td><td>F</td><td>60</td><td>SUMERGIBLE</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>TOMÁS LANDER</td><td>VALLES DEL TUY</td><td>OCUMARITO (OCU)</td>
+                                <td>X</td><td></td><td></td><td>KSB</td><td>ETA 250-400</td>
+                                <td>294</td><td>60</td><td>500</td><td>250</td>
+                                <td>ABB MOTORS</td><td>300</td><td>460</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>1780</td><td>506T</td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>TOMÁS LANDER</td><td>VALLES DEL TUY</td><td>TM2</td>
+                                <td>X</td><td></td><td></td><td>KSB</td><td></td>
+                                <td>180</td><td>180</td><td>400</td><td>200</td>
+                                <td>US ELECTRICAL MOTORS</td><td>300</td><td>460</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>1785</td><td>449T</td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>2</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>TOMÁS LANDER</td><td>VALLES DEL TUY</td><td>MATA DE COCO</td>
+                                <td>X</td><td></td><td></td><td>KSB</td><td>MEGANORM 100-400</td>
+                                <td>50</td><td>95</td><td>200</td><td>100</td>
+                                <td>SIEMENS</td><td>100</td><td>460</td><td>DIRECTO</td>
+                                <td>1780</td><td></td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>TOMÁS LANDER</td><td>VALLES DEL TUY</td><td>VALLE VERDE</td>
+                                <td>X</td><td></td><td></td><td>FARRBANK</td><td>100-A400</td>
+                                <td>15</td><td>24</td><td>200</td><td>100</td>
+                                <td>US ELECTRICAL MOTORS</td><td>25</td><td>230</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>1760</td><td>284TPH</td><td>F</td><td>60</td><td>HORIZONTAL</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>TOMÁS LANDER</td><td>VALLES DEL TUY</td><td>SUCUTA I</td>
+                                <td></td><td></td><td>X</td><td>GOULDS</td><td>55GS75</td>
+                                <td>5</td><td>70</td><td></td><td>50</td>
+                                <td>FRANKLIN ELECTRIC</td><td>7.5</td><td>230</td><td>DIRECTO</td>
+                                <td>3450</td><td></td><td>F</td><td>60</td><td>SUMERGIBLE</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>TOMÁS LANDER</td><td>VALLES DEL TUY</td><td>SUCUTA II</td>
+                                <td></td><td></td><td>X</td><td>GOULDS</td><td>55GS75</td>
+                                <td>5</td><td>70</td><td></td><td>76</td>
+                                <td>FRANKLIN ELECTRIC</td><td>7.5</td><td>230</td><td>DIRECTO</td>
+                                <td>3450</td><td></td><td>F</td><td>60</td><td>SUMERGIBLE</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>TOMÁS LANDER</td><td>VALLES DEL TUY</td><td>SUCUTA III</td>
+                                <td></td><td></td><td>X</td><td>FABOVEN</td><td>1506X08 (12 ETAPAS)</td>
+                                <td>7</td><td>70</td><td></td><td>50</td>
+                                <td>FRANKLIN ELECTRIC</td><td>15</td><td>230</td><td>ESTRELLA - TRIÁNGULO</td>
+                                <td>3450</td><td></td><td>F</td><td>60</td><td>SUMERGIBLE</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>MIRANDA</td><td>TOMÁS LANDER</td><td>VALLES DEL TUY</td><td>PEÑAS NEGRAS</td>
+                                <td></td><td></td><td>X</td><td>KSB</td><td>UPD 212/4</td>
+                                <td>5</td><td>70</td><td>100</td><td>50</td>
+                                <td>FRANKLIN ELECTRIC</td><td>7.5</td><td>230</td><td>DIRECTO</td>
+                                <td>3450</td><td></td><td>F</td><td>60</td><td>SUMERGIBLE</td>
+                                <td>1</td><td></td><td></td><td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Categorías 4 a 16 (Plantillas vacías preparadas) -->
             <div class="tab-pane fade" id="cat4" role="tabpanel"><div class="text-muted text-center py-4">Categoría 4 pendiente de carga</div></div>
             <div class="tab-pane fade" id="cat5" role="tabpanel"><div class="text-muted text-center py-4">Categoría 5 pendiente de carga</div></div>
             <div class="tab-pane fade" id="cat6" role="tabpanel"><div class="text-muted text-center py-4">Categoría 6 pendiente de carga</div></div>
@@ -550,11 +890,10 @@
     <script>
         // Buscador instantáneo en vivo para la tabla activa
         document.getElementById('globalSearch').addEventListener('input', function(e) {
-            const term = e.target.value.toLowerCase().text(); // safe fallback below
             const searchTerm = e.target.value.toLowerCase().trim();
             const activePane = document.querySelector('.tab-pane.fade.show.active');
             if(activePane) {
-                const rows = activePane.querySelectorAll('tbody tr:not(.section-separator)');
+                const rows = activePane.querySelectorAll('tbody tr');
                 rows.forEach(row => {
                     const text = row.textContent.toLowerCase();
                     if (text.includes(searchTerm)) {
