@@ -162,6 +162,15 @@
             color: #ffffff;
         }
 
+        .section-separator {
+            background-color: #181818 !important;
+            color: var(--primary-red) !important;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
         /* Footer */
         footer {
             margin-top: 3rem;
@@ -205,8 +214,8 @@
 
         <!-- Zona de Pestañas (16 Categorías) -->
         <ul class="nav nav-tabs" id="categoryTabs" role="tablist">
-            <li class="nav-item" role="presentation"><button class="nav-link active" id="cat1-tab" data-bs-toggle="tab" data-bs-target="#cat1" type="button" role="tab">AVT Administración</button></li>
-            <li class="nav-item" role="presentation"><button class="nav-link" id="cat2-tab" data-bs-toggle="tab" data-bs-target="#cat2" type="button" role="tab">Categoría 2</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat1-tab" data-bs-toggle="tab" data-bs-target="#cat1" type="button" role="tab">AVT Administración</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link active" id="cat2-tab" data-bs-toggle="tab" data-bs-target="#cat2" type="button" role="tab">AVT Operaciones y Mtto Tub AC</button></li>
             <li class="nav-item" role="presentation"><button class="nav-link" id="cat3-tab" data-bs-toggle="tab" data-bs-target="#cat3" type="button" role="tab">Categoría 3</button></li>
             <li class="nav-item" role="presentation"><button class="nav-link" id="cat4-tab" data-bs-toggle="tab" data-bs-target="#cat4" type="button" role="tab">Categoría 4</button></li>
             <li class="nav-item" role="presentation"><button class="nav-link" id="cat5-tab" data-bs-toggle="tab" data-bs-target="#cat5" type="button" role="tab">Categoría 5</button></li>
@@ -226,8 +235,8 @@
         <!-- Contenido de las Tablas (Pestañas) -->
         <div class="tab-content table-panel" id="categoryTabsContent">
             
-            <!-- Categoría 1: AVT Administración (Con todos los datos de tu imagen) -->
-            <div class="tab-pane fade show active" id="cat1" role="tabpanel">
+            <!-- Categoría 1: AVT Administración -->
+            <div class="tab-pane fade" id="cat1" role="tabpanel">
                 <div class="table-responsive">
                     <table class="table table-dark-industrial table-striped align-middle searchable-table">
                         <thead>
@@ -290,8 +299,226 @@
                 </div>
             </div>
 
-            <!-- Categorías 2 a 16 (Plantillas vacías preparadas para las siguientes secciones) -->
-            <div class="tab-pane fade" id="cat2" role="tabpanel"><div class="text-muted text-center py-4">Categoría 2 pendiente de carga</div></div>
+            <!-- Categoría 2: AVT Operaciones y Mtto Tub AC -->
+            <div class="tab-pane fade show active" id="cat2" role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table table-dark-industrial table-striped align-middle searchable-table">
+                        <thead>
+                            <tr>
+                                <th>Detalle de la Demanda (Bien / Servicio)</th>
+                                <th>Unidad de Medida</th>
+                                <th>Cantidad Estimada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>PAQUETES DE PILAS DOBLE AA</td><td>UNID</td><td>20</td></tr>
+                            <tr><td>PAQUETES DE PILAS DOBLE AAA</td><td>UNID</td><td>20</td></tr>
+                            <tr class="section-separator"><td colspan="3"><i class="fa-solid fa-wrench me-2"></i> Material de Ferretería</td></tr>
+                            <tr><td>THERMOS DE AGUA POTOTO (PARA LAS CUADRILLAS)</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr><td>LLAVES DE LAVAMANOS 1 SOLO POMO</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr><td>BCOJA DE BAÑO</td><td>UNIDAD</td><td>10</td></tr>
+                            <tr><td>CANILLA PARA WC 1/2</td><td>UNIDAD</td><td>6</td></tr>
+                            <tr><td>CANILLA PARA LAVAMANOS 1/2</td><td>UNIDAD</td><td>6</td></tr>
+                            <tr><td>CERRADURA PARA PUERTA PARA SEGURIDAD</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr><td>CERRADURA DE POMO CON LLAVE</td><td>PARES</td><td>4</td></tr>
+                            <tr><td>GUANTES DE CARNAZA LARGOS PARA SOLDADOR</td><td>PARES</td><td>20</td></tr>
+                            <tr><td>GUANTES DE CARNAZA CORTO</td><td>PARES</td><td>20</td></tr>
+                            <tr><td>GUANTES AISLANTE PARA ELECTRICISTA</td><td>PARES</td><td>10</td></tr>
+                            <tr><td>PETO PARA SOLDADORES</td><td>UNIDAD</td><td>10</td></tr>
+                            <tr><td>LENTES PARA ESMERILAR</td><td>UNIDAD</td><td>10</td></tr>
+                            <tr><td>LENTES DE SOLDADURA OSCUROS</td><td>UNIDAD</td><td>25</td></tr>
+                            <tr><td>GUANTES PARA SOLDADOR</td><td>UNIDAD</td><td>10</td></tr>
+                            <tr><td>PALUSTRA</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr><td>MECHA PARA TALADRO DE RAMPLUG VERDE 1/4</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr><td>MECHA PARA TALADRO DE RAMPLUG AZUL 5/16</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr><td>MECHA PARA TALADRO DE RAMPLUG NARANJA 3/8</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr><td>MECHA PARA TALADRO DE RAMPLUG GRIS 3/4</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr><td>MECHA PARA MADERA 3/8</td><td>UNIDAD</td><td>3</td></tr>
+                            <tr><td>MECHA DE ACERO 3/8</td><td>UNIDAD</td><td>3</td></tr>
+                            <tr><td>MARTILLO</td><td>UNIDAD</td><td>3</td></tr>
+                            <tr><td>MANDARRIA PEQUEÑA</td><td>UNIDAD</td><td>3</td></tr>
+                            <tr><td>LLAVE DE TUBO 8"</td><td>UNIDAD</td><td>3</td></tr>
+                            <tr><td>LLAVE DE TUBO 12"</td><td>UNIDAD</td><td>3</td></tr>
+                            <tr><td>LLAVE DE TUBO 14"</td><td>UNIDAD</td><td>3</td></tr>
+                            <tr><td>LLAVE INGLESA AJUSTABLE</td><td>UNIDAD</td><td>3</td></tr>
+                            <tr><td>TARRAJA 1/2</td><td>UNIDAD</td><td>1</td></tr>
+                            <tr><td>TARRAJA 3/4</td><td>UNIDAD</td><td>1</td></tr>
+                            <tr><td>TARRAJA 1 1/2</td><td>UNIDAD</td><td>2</td></tr>
+                            <tr><td>ALICATE DE PRESION</td><td>UNIDAD</td><td>7</td></tr>
+                            <tr><td>ESPATULA</td><td>UNIDAD</td><td>7</td></tr>
+                            <tr><td>CINTA METRICA DE 100 MTS</td><td>UNIDAD</td><td>1</td></tr>
+                            <tr><td>METRO</td><td>UNIDAD</td><td>10</td></tr>
+                            <tr><td>AYUDANTE DE PLOMERO</td><td>JUEGO</td><td>2</td></tr>
+                            <tr><td>KIT DE ELECTRICISTA</td><td>JUEGO</td><td>2</td></tr>
+                            <tr><td>KIT DE DESTORNILLADORES DE PRESICION (PARA LENTE)</td><td>JUEGO</td><td>2</td></tr>
+                            <tr><td>KIT DE DESTORNILLADORES DE DADOS</td><td>JUEGO</td><td>2</td></tr>
+                            <tr><td>KIT DE LLAVE L</td><td>KL</td><td>2</td></tr>
+                            <tr><td>TORNILLOS DREVER 1"</td><td>KL</td><td>2</td></tr>
+                            <tr><td>TORNILLOS DRIEVER 1 1/2"</td><td>KL</td><td>2</td></tr>
+                            <tr><td>TORNILLOS DRIEVER 3/4"</td><td>CAJAS</td><td>2</td></tr>
+                            <tr><td>RAMPLUGS AZUL</td><td>CAJAS</td><td>1</td></tr>
+                            <tr><td>RAMPLUGS VERDES</td><td>CAJAS</td><td>1</td></tr>
+                            <tr><td>RAMPLUGS GRIS</td><td>CAJAS</td><td>1</td></tr>
+                            <tr><td>RAMPLUGS NARANJA</td><td>CAJAS</td><td>1</td></tr>
+                            <tr><td>RAMPLUGS MARPOSA DE PRESION</td><td>UNIDA</td><td>50</td></tr>
+                            <tr><td>CINCEL PLANO 3/4</td><td>UNIDAD</td><td>3</td></tr>
+                            <tr><td>CINCEL PUNTA</td><td>UNIDAD</td><td>5</td></tr>
+                            <tr><td>NIVEL</td><td>UNIDAD</td><td>3</td></tr>
+                            <tr><td>LAPA CUBETA PARA FRISO</td><td>UNIDAD</td><td>3</td></tr>
+                            <tr><td>CUCHARA</td><td>UNIDAD</td><td>3</td></tr>
+                            <tr><td>ESPONJA PARA FRISO</td><td>UNIDAD</td><td>3</td></tr>
+                            <tr><td>LUA DE 80</td><td>UNIDAD</td><td>25</td></tr>
+                            <tr><td>LUA DE 100</td><td>UNIDAD</td><td>25</td></tr>
+                            <tr><td>LUA DE 600</td><td>UNIDAD</td><td>25</td></tr>
+                            <tr><td>LUA DE 120</td><td>UNIDAD</td><td>25</td></tr>
+                            <tr><td>TENAZA</td><td>UNIDAD</td><td>2</td></tr>
+                            <tr><td>JUEGO DE LLAVES COMBINADAS 8</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr><td>CADENA DE 1"</td><td>UNIDAD</td><td>9</td></tr>
+                            <tr><td>CANDADO DE OREJA MEDIANO</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr><td>MACHETE</td><td>UNIDAD</td><td>10</td></tr>
+                            <tr><td>BARRENO</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr><td>CEPILLOS DE BARRER</td><td>UNIDAD</td><td>25</td></tr>
+                            <tr><td>PALA</td><td>UNIDAD</td><td>25</td></tr>
+                            <tr><td>LINTERNAS RECARGABLE</td><td>UNIDAD</td><td>10</td></tr>
+                            <tr><td>CEPILLOS DE CELDA GRUESA</td><td>UNIDAD</td><td>5</td></tr>
+                            <tr><td>CERRADURA CISA COMPLETA</td><td>UNIDAD</td><td>5</td></tr>
+                            <tr><td>ALICATE DE PRESION 10"</td><td>UNIDAD</td><td>2</td></tr>
+                            <tr><td>ALMOHADILLA</td><td>PIEZA</td><td>2</td></tr>
+                            <tr><td>BARRA BELLOTA</td><td>PIEZA</td><td>2</td></tr>
+                            <tr><td>CAJA DE HERRAMIENTAS GRANDE VACIA</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>CEPILLO DE GOMA PARA FRIBAR 6"</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>CINCEL PUNANO DE 8 1/2"</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>CINCEL PUNTERO GRANDE 20X40</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>CORTA TUBO DE 1/8 A 2"</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>CUCHARA PLANA PARA CONCRETO 7"</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>JUEGO DE DADOS DESDE 1/2" HASTA 1.1/2"</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>JUEGO DE DESTORNILLADORES (10PIEZAS)</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>MANDARRIA BELLOTA</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>MARTILLO CARPINTERO</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>MARTILLO DE BOLA</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>LENTES DE SEGURIDAD</td><td>UNIDAD</td><td>25</td></tr>
+                            <tr><td>DESTAPADOR DE CAÑERIA (RABO DE COCHINO)</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>VARELLAS DE DESTAPAR DE AGUA SERVIDA</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>TAUPICO</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>PRENSA DE BANCO 4"</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>HOJA DE SEGUETA</td><td>PEZA</td><td>20</td></tr>
+                            <tr><td>SEGUETA</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>BARRA PARA HOYAR</td><td>PEZA</td><td>10</td></tr>
+                            <tr><td>CIZALLA 12" MANUAL TIPO TIJERA</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>CINTA METRICA DE 6 MTS</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>TIPO METALICO</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>DESTORNILLADOR PLANO GRANDE</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>LINTERNA</td><td>PEZA</td><td>10</td></tr>
+                            <tr><td>TOBO PLASTICO</td><td>PEZA</td><td>10</td></tr>
+                            <tr><td>NIVE</td><td>PEZA</td><td>1</td></tr>
+                            <tr><td>MARCO DE SEGUETA</td><td>PEZA</td><td>5</td></tr>
+                            <tr><td>TENAZA 8"</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>NIVEL DE BURBUJA MEDIANO</td><td>PEZA</td><td>5</td></tr>
+                            <tr><td>ESCARDILLA</td><td>PEZA</td><td>5</td></tr>
+                            <tr><td>EXTENSION ELECTRICA 30 M. (2 POR AREA)</td><td>PEZA</td><td>5</td></tr>
+                            <tr><td>JUEGO DE DESTORNILLADORES (8 PIEZAS) (2 POR AREA)</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>LLAVE DE MECANICA COMBINADA DE 1.5/8"</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>LLAVE DE MECANICA COMBINADA DE 15 1/16"</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>JUEGO DE LLAVES FIJAS STANLEY</td><td>PEZA</td><td>5</td></tr>
+                            <tr><td>TARRAJA MANUAL DE 1/2" A 2"</td><td>PEZA</td><td>3</td></tr>
+                            <tr><td>PIEZA DE BANCO 4" RECORD</td><td>PEZA</td><td>4</td></tr>
+                            <tr><td>TENAZA 8"</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>CEPILLO DE FERRO PARA SOLDADOR</td><td>PEZA</td><td>6</td></tr>
+                            <tr><td>PINZA PARA SOLDAR DE 500 AMP</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>TEIPE BLANCO</td><td>UNIDAD</td><td>40</td></tr>
+                            <tr><td>TEIPE COBRA</td><td>UNIDAD</td><td>40</td></tr>
+                            <tr><td>ESMERIL 3 1/2"</td><td>PEZA</td><td>1</td></tr>
+                            <tr><td>PUNZON 7 1/2"</td><td>PEZA</td><td>1</td></tr>
+                            <tr><td>DISCOS DE ESMERIL 3 1/2"</td><td>PEZA</td><td>20</td></tr>
+                            <tr><td>DISCOS DE ESMERIL 7 1/2"</td><td>PEZA</td><td>20</td></tr>
+                            <tr><td>DISCOS PARA TROZADORA 14"</td><td>PEZA</td><td>20</td></tr>
+                            <tr><td>CILINDRO DE OXIGENO PARA EQUIPO DE OXICORTE</td><td>PEZA</td><td>6</td></tr>
+                            <tr><td>CILINDROS DE GAS PARA EQUIPO DE OXICORTE, 43 KG</td><td>PEZA</td><td>6</td></tr>
+                            <tr><td>KIT DE OXICORTE</td><td>PEZA</td><td>3</td></tr>
+                            <tr><td>VAINILLA LLENA SOLDADURA</td><td>KG</td><td>50</td></tr>
+                            <tr><td>VIDRIOS PARA CARETA OSCUROS N 10</td><td>PEZA</td><td>25</td></tr>
+                            <tr><td>VIDRIOS PARA CARETA CLAROS N 10</td><td>PEZA</td><td>25</td></tr>
+                            <tr><td>TIZAS PARA SOLDADOR</td><td>CAJA</td><td>25</td></tr>
+                            <tr><td>BOTIQUIN DE PRIMEROS AUXILIOS ESTANDAR</td><td>UNIDAD</td><td>2</td></tr>
+                            <tr><td>PIQUETA</td><td>PEZA</td><td>2</td></tr>
+                            <tr><td>PLANTA ELECTRICA 2500W</td><td>UNIDAD</td><td>3</td></tr>
+                            <tr><td>COMPRESOR</td><td>UNIDAD</td><td>1</td></tr>
+                            <tr><td>PISON DE COMPACTACIÓN</td><td>UNIDAD</td><td>1</td></tr>
+                            <tr><td>BROCHAS</td><td>UNIDAD</td><td>6</td></tr>
+                            <tr><td>RODILLO</td><td>UNIDAD</td><td>6</td></tr>
+                            <tr><td>CANILLA DE LAVAMANO</td><td>UNIDAD</td><td>6</td></tr>
+                            <tr><td>CANILLA DE WC</td><td>UNIDAD</td><td>6</td></tr>
+                            <tr><td>HERRAJE</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr><td>POCETA</td><td>UNIDAD</td><td>6</td></tr>
+                            <tr><td>PINTURA ASFALTICA</td><td>CUÑETE</td><td>2</td></tr>
+                            <tr><td>PINTURA SATINADA VERDE</td><td>CUÑETE</td><td>4</td></tr>
+                            <tr><td>PINTURA SATINADA ROJA</td><td>CUÑETE</td><td>4</td></tr>
+                            <tr><td>PINTURA SATINADA GRIS</td><td>CUÑETE</td><td>4</td></tr>
+                            <tr><td>PINTURA SATINADA BLANCA</td><td>CUÑETE</td><td>2</td></tr>
+                            <tr><td>FONDO MARINO</td><td>CUÑETE</td><td>2</td></tr>
+                            <tr><td>FONDO ANTICORROCIBO</td><td>CUÑETE</td><td>2</td></tr>
+                            <tr><td>PINTURA ESMALTE NEGRA</td><td>CUÑETE</td><td>2</td></tr>
+                            <tr><td>PINTURA SATINADA AMARILLA</td><td>CUÑETE</td><td>2</td></tr>
+                            <tr><td>LLAVE DE CIERRE RAPIDO</td><td>UNIDAD</td><td>8</td></tr>
+                            <tr><td>LLAVE DE ARRESTO</td><td>UNIDAD</td><td>8</td></tr>
+                            <tr><td>MECATE</td><td>KILO</td><td>10</td></tr>
+                            <tr class="section-separator"><td colspan="3"><i class="fa-solid fa-bolt me-2"></i> Materiales Eléctricos</td></tr>
+                            <tr><td>BOMBILLOS AHORRADORES</td><td>UNIDAD</td><td>200</td></tr>
+                            <tr><td>CABLES #10</td><td>MT</td><td>12</td></tr>
+                            <tr><td>SOCATES</td><td>UNIDAD</td><td>180</td></tr>
+                            <tr><td>TOMA CORRENTES</td><td>UNIDAD</td><td>10</td></tr>
+                            <tr><td>TEIPE GOMA</td><td>UNIDAD</td><td>10</td></tr>
+                            <tr><td>TEIPE PLASTICOS</td><td>K</td><td>6</td></tr>
+                            <tr><td>REFLECTORES TIPO LED 50V</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr><td>CABLES#LES # 12</td><td>ROLLO</td><td>2</td></tr>
+                            <tr><td>BREEKER DE 20 AMP</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr><td>CAJETINES</td><td>UNIDAD</td><td>6</td></tr>
+                            <tr><td>APAGADORES</td><td>UNIDAD</td><td>10</td></tr>
+                            <tr><td>CAPACITADOR 0.75</td><td>UNIDAD</td><td>2</td></tr>
+                            <tr><td>PROTECTORES DE VOLTAJE 110 AMP</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr class="section-separator"><td colspan="3"><i class="fa-solid fa-broom me-2"></i> Materiales de Limpieza</td></tr>
+                            <tr><td>COLETOS</td><td>UNIDAD</td><td>30</td></tr>
+                            <tr><td>DESINFECTANTE</td><td>CUÑETE</td><td>12</td></tr>
+                            <tr><td>CLORO</td><td>CUÑETE</td><td>12</td></tr>
+                            <tr><td>CICLON O MAS</td><td>UNIDAD</td><td>25</td></tr>
+                            <tr><td>JABON EN POLVO</td><td>KILO</td><td>40</td></tr>
+                            <tr><td>CEPILLO LIMPA POCETA</td><td>UNIDAD</td><td>20</td></tr>
+                            <tr><td>PAÑOS AMARILLOS</td><td>UNIDAD</td><td>30</td></tr>
+                            <tr><td>CERA</td><td>CUÑETE</td><td>10</td></tr>
+                            <tr><td>CEPILLO DE BARRER CERDA GRUESAS</td><td>UNIDAD</td><td>12</td></tr>
+                            <tr><td>CEPILLO DE BARRER CERDA SUAVE</td><td>UNIDAD</td><td>30</td></tr>
+                            <tr><td>BOLSAS PARA BASURA DE 30MLS</td><td>UNIDAD</td><td>12</td></tr>
+                            <tr><td>BOLSAS PARA LA BASURA DE 30MLO</td><td>UNIDAD</td><td>300</td></tr>
+                            <tr><td>TOBOS PLASTICOS</td><td>UNIDAD</td><td>12</td></tr>
+                            <tr><td>BOLSAS PARA LA BASURA PAPELERA</td><td>UNIDAD</td><td>300</td></tr>
+                            <tr><td>PALA</td><td>UNIDAD</td><td>6</td></tr>
+                            <tr><td>ESPONJAS</td><td>UNIDAD</td><td>20</td></tr>
+                            <tr><td>DESENGRASANTE</td><td>CUÑETE</td><td>12</td></tr>
+                            <tr><td>ARAGAN</td><td>UNIDAD</td><td>20</td></tr>
+                            <tr><td>LIMPIAVIDRIOS</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr><td>ESCOBILLON</td><td>UNIDAD</td><td>4</td></tr>
+                            <tr><td>DESTAPADOR DE CAÑERIA</td><td>UNIDAD</td><td>8</td></tr>
+                            <tr><td>MOPA</td><td>UNIDAD</td><td>6</td></tr>
+                            <tr class="section-separator"><td colspan="3"><i class="fa-solid fa-truck me-2"></i> Cauchos</td></tr>
+                            <tr><td>CAUCHOS N° 225/70/R16</td><td>UNIDAD</td><td>12</td></tr>
+                            <tr><td>CAUCHOS 12-00-R-24</td><td>UNIDAD</td><td>12</td></tr>
+                            <tr><td>CAUCHOS 225-70-R19,5</td><td>UNIDAD</td><td>12</td></tr>
+                            <tr><td>CAUCHOS 245-75-R17</td><td>UNIDAD</td><td>12</td></tr>
+                            <tr><td>CAUCHOS 750/R16</td><td>UNIDAD</td><td>12</td></tr>
+                            <tr><td>CAUCHOS 11R-22,5</td><td>UNIDAD</td><td>12</td></tr>
+                            <tr><td>CAUCHOS 12-00-R20</td><td>UNIDAD</td><td>12</td></tr>
+                            <tr><td>CAUCHOS 285/60-R18</td><td>UNIDAD</td><td>12</td></tr>
+                            <tr><td>CAUCHOS 265/75-R16</td><td>UNIDAD</td><td>12</td></tr>
+                            <tr><td>CAUCHOS 11-00-20</td><td>UNIDAD</td><td>12</td></tr>
+                            <tr><td>CAUCHOS 215-75-R15</td><td>UNIDAD</td><td>12</td></tr>
+                            <tr><td>CAUCHOS 125.80R18</td><td>UNIDAD</td><td>12</td></tr>
+                            <tr><td>CAUCHOS 19.5L24 (RETROEXCAVADORA)</td><td>UNIDAD</td><td>12</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Categorías 3 a 16 (Plantillas vacías preparadas) -->
             <div class="tab-pane fade" id="cat3" role="tabpanel"><div class="text-muted text-center py-4">Categoría 3 pendiente de carga</div></div>
             <div class="tab-pane fade" id="cat4" role="tabpanel"><div class="text-muted text-center py-4">Categoría 4 pendiente de carga</div></div>
             <div class="tab-pane fade" id="cat5" role="tabpanel"><div class="text-muted text-center py-4">Categoría 5 pendiente de carga</div></div>
@@ -323,13 +550,14 @@
     <script>
         // Buscador instantáneo en vivo para la tabla activa
         document.getElementById('globalSearch').addEventListener('input', function(e) {
-            const term = e.target.value.toLowerCase().trim();
+            const term = e.target.value.toLowerCase().text(); // safe fallback below
+            const searchTerm = e.target.value.toLowerCase().trim();
             const activePane = document.querySelector('.tab-pane.fade.show.active');
             if(activePane) {
-                const rows = activePane.querySelectorAll('tbody tr');
+                const rows = activePane.querySelectorAll('tbody tr:not(.section-separator)');
                 rows.forEach(row => {
                     const text = row.textContent.toLowerCase();
-                    if (text.includes(term)) {
+                    if (text.includes(searchTerm)) {
                         row.style.display = '';
                     } else {
                         row.style.display = 'none';
