@@ -27,6 +27,11 @@
             color: var(--text-light);
             margin: 0;
             padding: 0;
+            /* Protección contra selección de texto en la zona de datos */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         /* Cabecera Industrial Heavy Duty */
@@ -179,7 +184,7 @@
                 <p class="heavy-subtitle mb-0">Sistema de Consulta Estático (Alta Velocidad)</p>
             </div>
             <div>
-                <span class="text-muted small"><i class="fa-solid fa-bolt me-1"></i> Modo 100% Autónomo</span>
+                <span class="text-muted small"><i class="fa-solid fa-shield-halved me-1"></i> Modo Seguro y Protegido</span>
             </div>
         </div>
     </div>
@@ -192,7 +197,7 @@
                 <div class="col-md-12">
                     <div class="input-group">
                         <span class="input-group-text bg-dark border-secondary text-danger"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" id="globalSearch" class="form-control" placeholder="Buscar por código, descripción o especificación en todas las categorías...">
+                        <input type="text" id="globalSearch" class="form-control" placeholder="Buscar por detalle o unidad en la categoría activa...">
                     </div>
                 </div>
             </div>
@@ -200,7 +205,7 @@
 
         <!-- Zona de Pestañas (16 Categorías) -->
         <ul class="nav nav-tabs" id="categoryTabs" role="tablist">
-            <li class="nav-item" role="presentation"><button class="nav-link active" id="cat1-tab" data-bs-toggle="tab" data-bs-target="#cat1" type="button" role="tab">Categoría 1</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link active" id="cat1-tab" data-bs-toggle="tab" data-bs-target="#cat1" type="button" role="tab">AVT Administración</button></li>
             <li class="nav-item" role="presentation"><button class="nav-link" id="cat2-tab" data-bs-toggle="tab" data-bs-target="#cat2" type="button" role="tab">Categoría 2</button></li>
             <li class="nav-item" role="presentation"><button class="nav-link" id="cat3-tab" data-bs-toggle="tab" data-bs-target="#cat3" type="button" role="tab">Categoría 3</button></li>
             <li class="nav-item" role="presentation"><button class="nav-link" id="cat4-tab" data-bs-toggle="tab" data-bs-target="#cat4" type="button" role="tab">Categoría 4</button></li>
@@ -210,91 +215,97 @@
             <li class="nav-item" role="presentation"><button class="nav-link" id="cat8-tab" data-bs-toggle="tab" data-bs-target="#cat8" type="button" role="tab">Categoría 8</button></li>
             <li class="nav-item" role="presentation"><button class="nav-link" id="cat9-tab" data-bs-toggle="tab" data-bs-target="#cat9" type="button" role="tab">Categoría 9</button></li>
             <li class="nav-item" role="presentation"><button class="nav-link" id="cat10-tab" data-bs-toggle="tab" data-bs-target="#cat10" type="button" role="tab">Categoría 10</button></li>
-            <li class="nav-item" role="presentation"><button class="nav-link" id="cat11-tab" data-bs-toggle="tab" data-bs-target="#cat11" type="button" role="tab">Categoría 11</button></li>
-            <li class="nav-item" role="presentation"><button class="nav-link" id="cat12-tab" data-bs-toggle="tab" data-bs-target="#cat12" type="button" role="tab">Categoría 12</button></li>
-            <li class="nav-item" role="presentation"><button class="nav-link" id="cat13-tab" data-bs-toggle="tab" data-bs-target="#cat13" type="button" role="tab">Categoría 13</button></li>
-            <li class="nav-item" role="presentation"><button class="nav-link" id="cat14-tab" data-bs-toggle="tab" data-bs-target="#cat14" type="button" role="tab">Categoría 14</button></li>
-            <li class="nav-item" role="presentation"><button class="nav-link" id="cat15-tab" data-bs-toggle="tab" data-bs-target="#cat15" type="button" role="tab">Categoría 15</button></li>
-            <li class="nav-item" role="presentation"><button class="nav-link" id="cat16-tab" data-bs-toggle="tab" data-bs-target="#cat16" type="button" role="tab">Categoría 16</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat11-tab" data-bs-toggle="tab" data-bs-target="#cat11" type="button" role="tab">Categoría 12</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat12-tab" data-bs-toggle="tab" data-bs-target="#cat12" type="button" role="tab">Categoría 13</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat13-tab" data-bs-toggle="tab" data-bs-target="#cat13" type="button" role="tab">Categoría 14</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat14-tab" data-bs-toggle="tab" data-bs-target="#cat14" type="button" role="tab">Categoría 15</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat15-tab" data-bs-toggle="tab" data-bs-target="#cat15" type="button" role="tab">Categoría 16</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="cat16-tab" data-bs-toggle="tab" data-bs-target="#cat16" type="button" role="tab">Impresoras AVT</button></li>
         </ul>
 
         <!-- Contenido de las Tablas (Pestañas) -->
         <div class="tab-content table-panel" id="categoryTabsContent">
             
-            <!-- Categoría 1 -->
+            <!-- Categoría 1: AVT Administración (Con todos los datos de tu imagen) -->
             <div class="tab-pane fade show active" id="cat1" role="tabpanel">
                 <div class="table-responsive">
-                    <table class="table table-dark-industrial table-striped align-middle">
+                    <table class="table table-dark-industrial table-striped align-middle searchable-table">
                         <thead>
                             <tr>
-                                <th>Código</th>
-                                <th>Descripción del Material / Insumo</th>
-                                <th>Unidad</th>
-                                <th>Cantidad</th>
-                                <th>Observaciones</th>
+                                <th>Detalle de la Demanda (Bien / Servicio)</th>
+                                <th>Unidad de Medida</th>
+                                <th>Cantidad Estimada</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>MAT-001</td>
-                                <td>Válvula de compuerta de 4 pulgadas</td>
-                                <td>PZA</td>
-                                <td>12</td>
-                                <td>Reemplazo principal</td>
-                            </tr>
-                            <tr>
-                                <td>MAT-002</td>
-                                <td>Tubo de acero al carbón 6"</td>
-                                <td>MTS</td>
-                                <td>36</td>
-                                <td>Línea de aducción</td>
-                            </tr>
+                            <tr><td>LIBRETAS EN PASTADAS DE UNA LÍNEA</td><td>UND</td><td>30</td></tr>
+                            <tr><td>CARPETAS OSLO LOMO ANCHOS</td><td>UND</td><td>30</td></tr>
+                            <tr><td>LIBRO DE ACTAS 200 FOLIOS</td><td>UND</td><td>30</td></tr>
+                            <tr><td>LIBRO DE ACTAS 300 FOLIOS</td><td>UND</td><td>10</td></tr>
+                            <tr><td>PAPEL BOND BASE 20 TICARTA</td><td>CAJAS</td><td>4</td></tr>
+                            <tr><td>PAPEL BOND BASE 20 T/ OFICIO</td><td>CAJAS</td><td>2</td></tr>
+                            <tr><td>BLOCK MEMO RAPIDO</td><td>UNIDAD</td><td>50</td></tr>
+                            <tr><td>GOMA DE BARA L. OFICIO</td><td>CAJA</td><td>10</td></tr>
+                            <tr><td>BOLÍGRAFO AZUL PIMEDIA</td><td>CAJA</td><td>20</td></tr>
+                            <tr><td>BOLÍGRAFO NEGRO PMEDIA</td><td>CAJA</td><td>20</td></tr>
+                            <tr><td>LÁPIZ GRAFITO N° 2</td><td>CAJA</td><td>10</td></tr>
+                            <tr><td>CINTA ADHESIVA CELOVEN 2CMX2,5CMPORE 6 UNIDADES</td><td>PAQUETE</td><td>10</td></tr>
+                            <tr><td>CLIPS STANDARD N1</td><td>CAJA</td><td>6</td></tr>
+                            <tr><td>TIPPEX LÍQUIDO</td><td>UNID</td><td>10</td></tr>
+                            <tr><td>CARPETAS DE FIBRAS TIPO CARTA X 25 UND</td><td>CAJA</td><td>10</td></tr>
+                            <tr><td>CARPETAS DE MANILA TIPO CARTA</td><td>CAJA</td><td>10</td></tr>
+                            <tr><td>CAPERTAS DE FIBRAS TIPO OFICIO X 25 UND</td><td>CAJA</td><td>10</td></tr>
+                            <tr><td>CARPETA DE MANILA TIPO OFICIO</td><td>CAJA</td><td>5</td></tr>
+                            <tr><td>CARPETA DE EXPEDIENTES DE 3 DIVISIÓN</td><td>CAJA</td><td>4</td></tr>
+                            <tr><td>ENGRAPADORAS</td><td>UND</td><td>10</td></tr>
+                            <tr><td>ENGRAPADORAS ELECTRICA</td><td>UNID</td><td>2</td></tr>
+                            <tr><td>RESALTADORES</td><td>CAJA</td><td>6</td></tr>
+                            <tr><td>MARCADORAS</td><td>CAJA</td><td>30</td></tr>
+                            <tr><td>SACAGRAPAS CORRUGADAS</td><td>UND</td><td>10</td></tr>
+                            <tr><td>PEGA DE BARRA</td><td>CAJA</td><td>3</td></tr>
+                            <tr><td>TIJERA</td><td>UNID</td><td>6</td></tr>
+                            <tr><td>CARTUCHO TINTA COLOR (HPDE SIGNJET 500)</td><td>UND</td><td>2</td></tr>
+                            <tr><td>CARTUCHO TINTA NEGRA (HPDE SIGNJET 500)</td><td>UND</td><td>5</td></tr>
+                            <tr><td>PAPEL PARA PLOTTER (ROLLO)</td><td>UND</td><td>6</td></tr>
+                            <tr><td>LÁPIZ BICOLOR</td><td>CAJA</td><td>5</td></tr>
+                            <tr><td>RESALTADOR AMARILLO</td><td>CAJA</td><td>6</td></tr>
+                            <tr><td>TIRO EMBALARE BLANCO 2</td><td>UND</td><td>15</td></tr>
+                            <tr><td>TIRRO PEMBALAR TRANSPARENTE</td><td>UND</td><td>15</td></tr>
+                            <tr><td>TIRRO DE PAPEL</td><td>UND</td><td>5</td></tr>
+                            <tr><td>REGLA 30 CM</td><td>UND</td><td>12</td></tr>
+                            <tr><td>ESPIRALES PICUADERNAR 1/2"</td><td>UND</td><td>10</td></tr>
+                            <tr><td>ESPIRALES PICUADERNAR 1"</td><td>UND</td><td>10</td></tr>
+                            <tr><td>ESPIRALES PICUADERNAR 9/16</td><td>UND</td><td>10</td></tr>
+                            <tr><td>TONER CANON 1025i</td><td>UND</td><td>50</td></tr>
+                            <tr><td>TONER CANON IR2016</td><td>UND</td><td>50</td></tr>
+                            <tr><td>TONER CANON GPR22</td><td>UND</td><td>50</td></tr>
+                            <tr><td>TONER CANON NPG11</td><td>UND</td><td>100</td></tr>
+                            <tr><td>LIGAS AMARILLAS (25*6)</td><td>PAQUETE</td><td>2</td></tr>
+                            <tr><td>TESTER</td><td>UND</td><td>1</td></tr>
+                            <tr><td>METRO STANLEY 8 Mts.</td><td>UND.</td><td>1</td></tr>
+                            <tr><td>CINTA MÉTRICA 50 Mts.</td><td>UND.</td><td>1</td></tr>
+                            <tr><td>MUEBLES PARA ARCHIVAR EXPEDIENTES (Recursos Humanos)</td><td>UND</td><td>2</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Categoría 2 -->
-            <div class="tab-pane fade" id="cat2" role="tabpanel">
-                <div class="table-responsive">
-                    <table class="table table-dark-industrial table-striped align-middle">
-                        <thead>
-                            <tr>
-                                <th>Código</th>
-                                <th>Descripción del Material / Insumo</th>
-                                <th>Unidad</th>
-                                <th>Cantidad</th>
-                                <th>Observaciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>MAT-101</td>
-                                <td>Empacadura de nitrilo 8"</td>
-                                <td>PZA</td>
-                                <td>25</td>
-                                <td>Estación de bombeo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Categorías 3 a 16 (Plantillas vacías listas para rellenar) -->
-            <div class="tab-pane fade" id="cat3" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 3</div></div>
-            <div class="tab-pane fade" id="cat4" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 4</div></div>
-            <div class="tab-pane fade" id="cat5" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 5</div></div>
-            <div class="tab-pane fade" id="cat6" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 6</div></div>
-            <div class="tab-pane fade" id="cat7" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 7</div></div>
-            <div class="tab-pane fade" id="cat8" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 8</div></div>
-            <div class="tab-pane fade" id="cat9" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 9</div></div>
-            <div class="tab-pane fade" id="cat10" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 10</div></div>
-            <div class="tab-pane fade" id="cat11" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 11</div></div>
-            <div class="tab-pane fade" id="cat12" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 12</div></div>
-            <div class="tab-pane fade" id="cat13" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 13</div></div>
-            <div class="tab-pane fade" id="cat14" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 14</div></div>
-            <div class="tab-pane fade" id="cat15" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 15</div></div>
-            <div class="tab-pane fade" id="cat16" role="tabpanel"><div class="text-muted text-center py-4">Sin registros en Categoría 16</div></div>
+            <!-- Categorías 2 a 16 (Plantillas vacías preparadas para las siguientes secciones) -->
+            <div class="tab-pane fade" id="cat2" role="tabpanel"><div class="text-muted text-center py-4">Categoría 2 pendiente de carga</div></div>
+            <div class="tab-pane fade" id="cat3" role="tabpanel"><div class="text-muted text-center py-4">Categoría 3 pendiente de carga</div></div>
+            <div class="tab-pane fade" id="cat4" role="tabpanel"><div class="text-muted text-center py-4">Categoría 4 pendiente de carga</div></div>
+            <div class="tab-pane fade" id="cat5" role="tabpanel"><div class="text-muted text-center py-4">Categoría 5 pendiente de carga</div></div>
+            <div class="tab-pane fade" id="cat6" role="tabpanel"><div class="text-muted text-center py-4">Categoría 6 pendiente de carga</div></div>
+            <div class="tab-pane fade" id="cat7" role="tabpanel"><div class="text-muted text-center py-4">Categoría 7 pendiente de carga</div></div>
+            <div class="tab-pane fade" id="cat8" role="tabpanel"><div class="text-muted text-center py-4">Categoría 8 pendiente de carga</div></div>
+            <div class="tab-pane fade" id="cat9" role="tabpanel"><div class="text-muted text-center py-4">Categoría 9 pendiente de carga</div></div>
+            <div class="tab-pane fade" id="cat10" role="tabpanel"><div class="text-muted text-center py-4">Categoría 10 pendiente de carga</div></div>
+            <div class="tab-pane fade" id="cat11" role="tabpanel"><div class="text-muted text-center py-4">Categoría 11 pendiente de carga</div></div>
+            <div class="tab-pane fade" id="cat12" role="tabpanel"><div class="text-muted text-center py-4">Categoría 12 pendiente de carga</div></div>
+            <div class="tab-pane fade" id="cat13" role="tabpanel"><div class="text-muted text-center py-4">Categoría 13 pendiente de carga</div></div>
+            <div class="tab-pane fade" id="cat14" role="tabpanel"><div class="text-muted text-center py-4">Categoría 14 pendiente de carga</div></div>
+            <div class="tab-pane fade" id="cat15" role="tabpanel"><div class="text-muted text-center py-4">Categoría 15 pendiente de carga</div></div>
+            <div class="tab-pane fade" id="cat16" role="tabpanel"><div class="text-muted text-center py-4">Categoría 16 pendiente de carga</div></div>
 
         </div>
 
@@ -302,7 +313,7 @@
 
     <footer>
         <div class="container">
-            <p class="mb-0">Acueducto Valles del Tuy &bull; Plan de Compras Histórico (2021)</p>
+            <p class="mb-0">Acueducto Valles del Tuy &bull; Plan de Compras Histórico (2021) &bull; Todos los derechos reservados</p>
         </div>
     </footer>
 
@@ -310,13 +321,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Buscador instantáneo en vivo para todas las tablas de la página
+        // Buscador instantáneo en vivo para la tabla activa
         document.getElementById('globalSearch').addEventListener('input', function(e) {
             const term = e.target.value.toLowerCase().trim();
-            const panes = document.querySelectorAll('.tab-pane');
-
-            panes.forEach(pane => {
-                const rows = pane.querySelectorAll('tbody tr');
+            const activePane = document.querySelector('.tab-pane.fade.show.active');
+            if(activePane) {
+                const rows = activePane.querySelectorAll('tbody tr');
                 rows.forEach(row => {
                     const text = row.textContent.toLowerCase();
                     if (text.includes(term)) {
@@ -325,7 +335,7 @@
                         row.style.display = 'none';
                     }
                 });
-            });
+            }
         });
     </script>
 </body>
